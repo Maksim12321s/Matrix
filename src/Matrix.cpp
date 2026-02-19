@@ -103,6 +103,14 @@ Matrix& Matrix::operator*(Matrix& a){
     }
     return *rez; 
 }
+Matrix& Matrix::operator*(float a){
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < m; j++){
+            matr[i][j] *= a;
+        }
+    }
+    return *this;
+}
 float* Matrix::data() const{
     float* data = new float[n*m];
     for(int i = 0; i < n; i++){
@@ -112,6 +120,7 @@ float* Matrix::data() const{
     }
     return data;
 }
+
 void Matrix::MakeTraspanent(){
     int temp = m;
     m = n;

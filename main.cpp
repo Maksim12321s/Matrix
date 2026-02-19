@@ -19,6 +19,9 @@ int main(){
     
     c = a*b;
     c.Show();
+    std::cout << "------------------" <<std::endl;
+    c*2;
+    c.Show();
     std::cout << "Helo" << std::endl;
     return 0;
 

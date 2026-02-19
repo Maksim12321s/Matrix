@@ -18,6 +18,7 @@ public:
     void Show() const;
     Matrix& Reverse() const;
     float Determinent();
+    Matrix& operator*(float a);
     Matrix& operator+(Matrix& a);
     Matrix& operator-(Matrix& a);
     Matrix& operator*(Matrix& a);
