@@ -33,11 +33,27 @@ namespace Vectors{
     };
 
     class Vec3{
+        
+        public:
+            int x;
+            int y;
+            int z;
+            Vec3(double x, double y, double z);
+            Vec3();
+            Vec3 operator+(const Vec3&);
+            Vec3 operator-(const Vec3&);
+            Vec3& operator=(const Vec3&);
+            Vec3& operator+=(const Vec3&);
+            Vec3& operator-=(const Vec3&);
     };
 
-    class Vec4{
-
+    class Vec4: public Vec3{
+        int t;
+        public:
+            Vec4();
+            Vec4(double x, double y, double z, double t);
     };
+    Vec3 Cross(const Vec3&, const Vec3&);
 };
 
 #endif
