@@ -1,28 +1,26 @@
 #include <iostream>
 #include "Matrix.h"
 #include <vector>
-
+using namespace Vectors;
 int main(){
 
-    Matrix a(2,2);
-    Matrix b(2,1);
-    std::vector<float> aData = {1.0f,2.0f,3.0f,4.0f};
-    std::vector<float> bData = {5.0f,6.0f};
     
-    a(aData);
-    b(bData);
-    a.Show();
-    std::cout << "-------------------" << std::endl;
-    b.Show();
-    std::cout << "-------------------" << std::endl;
-    Matrix c(1,1);
-    
-    c = a*b;
-    c.Show();
-    std::cout << "------------------" <<std::endl;
-    c*2;
-    c.Show();
-    std::cout << "Helo" << std::endl;
+    double *arr = new double[4];
+    arr[0] = 0.1;
+    arr[1] = 0.2;
+    arr[2] = 0.3;
+    arr[3] = 0.4;
+    Matrix a(2,2,arr);
+    Matrix b(a);
+    a.show();
+    b.show();
+    Matrix c(2,2);
+    c = b + a;
+    c.show();
+    c -= a;
+    c.show();
+    c -= a;
+    c.show();
     return 0;
 
 }
