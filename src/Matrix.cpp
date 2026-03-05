@@ -11,8 +11,12 @@ Matrix::Matrix(int n, int m): n(n), m(m){
     }
 }
 
-Matrix::Matrix(int n, int m, double *matrix):n(n), m(m),arr(matrix){
-
+Matrix::Matrix(int n, int m, double *matrix):n(n), m(m){
+    arr = new double[n * m];
+    
+    for (int i = 0; i < n * m; ++i) {
+        arr[i] = matrix[i];
+    }
 }
 
 Matrix::Matrix(const Matrix& copy):n(copy.n),m(copy.m){
@@ -22,14 +26,13 @@ Matrix::Matrix(const Matrix& copy):n(copy.n),m(copy.m){
             arr[i*m + j] = copy.arr[i*m + j];
         }
     }
-    
 }
 
 Matrix::Matrix():Matrix(1,1){
 
 }
 
-Matrix::Matrix(Matrix&& temp){
+Matrix::Matrix(Matrix&& temp):n(temp.n), m(temp.m){
     arr = temp.arr;
     temp.arr = nullptr;
 }
@@ -73,7 +76,7 @@ Vectors::Matrix Matrix::operator*(const Matrix& b) const{
     for(int i = 0; i < newN; i++){
         for(int j = 0; j < newM; j++){
             for(int k =0; k < m; k++){
-                rez[i*newM + j] += arr[i*m + k] * arr[j*n + k];
+                rez[i*newM + j] += arr[i*m + k] * b[k*b.m + j];
             }
         }
     }
@@ -81,7 +84,14 @@ Vectors::Matrix Matrix::operator*(const Matrix& b) const{
 }
 
 Vectors::Matrix& Matrix::operator=(const Matrix& b){
-    assert((n == b.n) && (m == b.m));
+    if(this == &b) return *this;
+    delete[] arr;
+
+    n = b.n;
+    m = b.m;
+
+    arr = new double[n*m];
+    
     for(int i = 0; i < n; i++){
         for(int j = 0; j < m; j++){
             arr[i*m + j] = b[i*m + j];
