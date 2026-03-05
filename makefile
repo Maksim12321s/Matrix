@@ -12,10 +12,12 @@ build:
 	cmake --build $(BUILD_DIR)
 
 test: build
-		cd $(BUILD_DIR) && ./$(EXEC_TESTS)
+		cd $(BUILD_DIR) && ./$(EXEC_TESTS) && ./vectorTests
 
 clean:
 	rm -rf $(BUILD_DIR)
 
 run: build
 		cd $(BUILD_DIR) && ./$(EXEC_PROG)
+
+rebuild: clean build
