@@ -21,6 +21,7 @@ int main(){
     c.show();
     c -= a;
     c.show();
+    Vec3 newVec(1,2,3);
     return 0;
 
 }
