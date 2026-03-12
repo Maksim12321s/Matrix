@@ -1,4 +1,5 @@
 #include "Matrix.h"
+#include "math.h"
 
 using namespace Vectors;
 
@@ -46,4 +47,16 @@ Vec3& Vec3::operator-=(const Vec3& b){
 Vec3 Vectors::Cross(const Vec3& a, const Vec3& b){
     Vec3 rez(a.y*b.z - a.z*b.y, a.z*b.x - a.x*b.z,a.x*b.y - a.y*b.x);
     return rez;
+}
+
+Vec3& Vec3::normalize(){
+    float len = sqrt(x*x+y*y+z*z);
+    x = x/len;
+    y = y/len;
+    z = z/len;
+    return *this;
+}
+
+Vec3 Vec3::operator*(const float a){
+    return Vec3(x*a,y*a,z*a);
 }

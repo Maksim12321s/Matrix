@@ -5,14 +5,14 @@ using namespace Vectors;
 
 
 Matrix::Matrix(int n, int m): n(n), m(m){
-    arr = new double[n*m];
+    arr = new float[n*m];
     for(int i = 0; i < n*m; i++){
         arr[i] = 0;
     }
 }
 
-Matrix::Matrix(int n, int m, double *matrix):n(n), m(m){
-    arr = new double[n * m];
+Matrix::Matrix(int n, int m, float *matrix):n(n), m(m){
+    arr = new float[n * m];
     
     for (int i = 0; i < n * m; ++i) {
         arr[i] = matrix[i];
@@ -20,7 +20,7 @@ Matrix::Matrix(int n, int m, double *matrix):n(n), m(m){
 }
 
 Matrix::Matrix(const Matrix& copy):n(copy.n),m(copy.m){
-    arr = new double[n*m];
+    arr = new float[n*m];
     for(int i = 0; i < n; i++){
         for(int j = 0; j < m; j++){
             arr[i*m + j] = copy.arr[i*m + j];
@@ -38,12 +38,12 @@ Matrix::Matrix(Matrix&& temp):n(temp.n), m(temp.m){
 }
 
 
-double& Matrix::operator[](int i){
+float& Matrix::operator[](int i){
     assert((n * m > i) && (i >= 0));
     return arr[i];
 }
 
-double Matrix::operator[](int i) const{
+float Matrix::operator[](int i) const{
     assert((n * m > i) && (i >= 0));
     return arr[i];
 }
@@ -90,7 +90,7 @@ Vectors::Matrix& Matrix::operator=(const Matrix& b){
     n = b.n;
     m = b.m;
 
-    arr = new double[n*m];
+    arr = new float[n*m];
     
     for(int i = 0; i < n; i++){
         for(int j = 0; j < m; j++){
@@ -137,3 +137,12 @@ void Matrix::show(){
 Matrix::~Matrix(){
     delete[] arr;
 }
+
+int Matrix::getSize(){
+    return n*m;
+}
+
+float* Matrix::getData(){
+    return arr;
+}
+

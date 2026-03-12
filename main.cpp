@@ -5,7 +5,7 @@ using namespace Vectors;
 int main(){
 
     
-    double *arr = new double[4];
+    float *arr = new float[4];
     arr[0] = 0.1;
     arr[1] = 0.2;
     arr[2] = 0.3;

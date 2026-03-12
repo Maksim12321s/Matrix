@@ -9,7 +9,7 @@ TEST(MatrixTest, ConstructorAndGetters) {
 }
 
 TEST(MatrixTest, ConstructorWithArray) {
-    std::vector<double> data = {1.0, 2.0, 3.0, 4.0};
+    std::vector<float> data = {1.0, 2.0, 3.0, 4.0};
     Matrix m(2, 2, data.data());
 
     EXPECT_DOUBLE_EQ(m[0], 1.0);
